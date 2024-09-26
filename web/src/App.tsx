@@ -2,7 +2,7 @@ import React from 'react';
 import { SafeAreaView, ScrollView, Text, View, StyleSheet } from 'react-native';
 
 const App = () => {
-  const names = ['','ギルド','たすく','たくと','えふじ','小西智樹','あさだん','notch_man'];
+  const names = ['伊勢','芦沢','えふじ','とまと','やーさん','モリ','ギルド','たすく','たくと','小西智樹','notch_man'];
 
 
   return (
