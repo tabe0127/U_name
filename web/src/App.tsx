@@ -3,7 +3,7 @@ import { SafeAreaView, ScrollView, Text, View, StyleSheet} from 'react-native';
 import { Button } from '@mui/material';
 
 const App = () => {
-  const names = ['伊勢','芦沢','えふじ','とまと','やーさん','モリ','ギルド','たすく','たくと','小西智樹','notch_man'];
+  const names = ['伊勢(3D:44:23:F3:33:88:DD)','芦沢(3D:55:23:F3:09:23:E3)','えふじ(E6:33:44:F3:09:23:A2)','とまと','やーさん','モリ','ギルド','たすく','たくと','小西智樹','notch_man'];
 
 // Bluetoothデバイスに接続する非同期関数
 async function connectBluetooth() {
