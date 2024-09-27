@@ -51,11 +51,11 @@ async function connectBluetooth() {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <view style={{flex:1,justifyContent: 'left', alignItems: 'left'}}>
-          <Text>
+        <View>
+          <Text style={styles.title}>
             U_name
           </Text>
-        </view>
+        </View>
         <Button variant="contained" className='button' onClick={connectBluetooth}>近くの人を探す</Button>
         <View style={styles.listContainer}>
           <Text style={styles.listItem}>
@@ -73,6 +73,10 @@ async function connectBluetooth() {
 };
 
 const styles = StyleSheet.create({
+  title: {
+    fontSize: 80,
+    margin: 30,
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -84,6 +88,7 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     alignItems: 'center', // 横方向に要素を中央寄せ
+    margin: 20,
   },
   listItem: {
     fontSize: 18,
