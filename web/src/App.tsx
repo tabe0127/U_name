@@ -10,7 +10,7 @@ async function connectBluetooth() {
   try {
     // ユーザーにデバイスを選択させ、選択されたデバイスを取得
     const device = await navigator.bluetooth.requestDevice({
-        filters: [{ services: ["device_information"] }]
+      acceptAllDevices: true,
     });
 
     console.log(device);
