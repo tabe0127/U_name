@@ -48,26 +48,6 @@ async function connectBluetooth() {
   }
 }
 
-  // document.querySelector('button')?.addEventListener('click', async () => {
-  //   try {
-  //     const scanner = await navigator.bluetooth.requestLEScan({
-  //       acceptAllAdvertisements: true,
-  //       keepRepeatedDevices: true,
-  //     });
-  //     navigator.bluetooth.addEventListener("advertisementreceived", ({ device }) => {
-  //       // 見つかったビーコンデバイス
-  //       console.log(device);
-  //     });
-  //   } catch(error) {
-  //     console.log('デバイスの選択に失敗しました:', error);
-  //   }
-  // });
-  
-
-  
-  
-
-
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -76,7 +56,7 @@ async function connectBluetooth() {
             U_name
           </Text>
         </view>
-        <Button variant="contained" className='button' onClick={connectBluetooth}>Contained</Button>
+        <Button variant="contained" className='button' onClick={connectBluetooth}>近くの人を探す</Button>
         <View style={styles.listContainer}>
           <Text style={styles.listItem}>
             ☆今近くにいる人リスト☆
