@@ -1,8 +1,71 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, Text, View, StyleSheet } from 'react-native';
+import { SafeAreaView, ScrollView, Text, View, StyleSheet} from 'react-native';
+import { Button } from '@mui/material';
 
 const App = () => {
   const names = ['伊勢','芦沢','えふじ','とまと','やーさん','モリ','ギルド','たすく','たくと','小西智樹','notch_man'];
+
+// Bluetoothデバイスに接続する非同期関数
+async function connectBluetooth() {
+  try {
+    // ユーザーにデバイスを選択させ、選択されたデバイスを取得
+    const device = await navigator.bluetooth.requestDevice({
+      acceptAllDevices: true,
+    });
+
+    console.log(device);
+    const server = await device.gatt?.connect();
+
+    // 選択されたデバイスに接続
+    const infoService = await server?.getPrimaryService("device_information");
+
+    // デバイス情報サービスに接続
+    const characteristics = await infoService?.getCharacteristics();
+
+    // サービスの特性を取得
+    const ary = [];
+    // 特性の値を読み取り、デコードして配列に格納
+    if (characteristics !== undefined) {
+      for (const characteristic of characteristics) {
+        const value = await characteristic.readValue();
+        ary.push(new TextDecoder().decode(value));
+  
+        // 特性値が変更されたときのイベントリスナーを追加
+        // characteristic.addEventListener("characteristicvaluechanged", event => {
+        //   console.log(new TextDecoder().decode(event.target?.value));
+        // });
+  
+        // 通知を開始
+        await characteristic.startNotifications();
+      }
+    }
+    
+    // 読み取った特性の値をコンソールに表示
+    console.log(ary);
+  } catch (error) {
+    // エラーが発生した場合、コンソールにエラーを表示
+    console.error(error);
+  }
+}
+
+  // document.querySelector('button')?.addEventListener('click', async () => {
+  //   try {
+  //     const scanner = await navigator.bluetooth.requestLEScan({
+  //       acceptAllAdvertisements: true,
+  //       keepRepeatedDevices: true,
+  //     });
+  //     navigator.bluetooth.addEventListener("advertisementreceived", ({ device }) => {
+  //       // 見つかったビーコンデバイス
+  //       console.log(device);
+  //     });
+  //   } catch(error) {
+  //     console.log('デバイスの選択に失敗しました:', error);
+  //   }
+  // });
+  
+
+  
+  
 
 
   return (
@@ -13,6 +76,7 @@ const App = () => {
             U_name
           </Text>
         </view>
+        <Button variant="contained" className='button' onClick={connectBluetooth}>Contained</Button>
         <View style={styles.listContainer}>
           <Text style={styles.listItem}>
             ☆今近くにいる人リスト☆
