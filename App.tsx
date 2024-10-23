@@ -89,6 +89,13 @@ function App(): React.JSX.Element {
           <Section title="Learn More">
             Read the docs to discover what to do next:
           </Section> */}
+          <Section title="近くにいる人">
+            えふじ{'\n'}
+            Tomoki Konishi[🐥]{'\n'}
+            たかはし{'\n'}
+            mirano yamakawa{'\n'}
+            河名 翼{'\n'}
+          </Section>
           <LearnMoreLinks />
         </View>
       </ScrollView>
